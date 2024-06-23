@@ -9,6 +9,7 @@ import { CSSProperties } from 'react';
 
 export const Article = ({ style }: {style: CSSProperties}) => {
 	return (
+		
 		<div style={style}>
 			<article className={clsx(styles.article)}>
 				<Text as='h1' size={45} weight={800} uppercase dynamicLite>
