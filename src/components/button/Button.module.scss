@@ -8,6 +8,7 @@
 	text-align: center;
 	border: 1px solid #000000;
 	cursor: pointer;
+	background: #ffc802;
 }
 
 .button:active {
@@ -15,5 +16,27 @@
 }
 
 .button:hover {
-	background: var(--gold, #ffc802);
+	background: var(--gold, #FFEDAB);
+}
+
+.button_secondary {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	width: 210px;
+	height: 50px;
+	text-align: center;
+	border: 1px solid #000000;
+	cursor: pointer;
+	background: white;
+}
+
+.button_secondary:active {
+	background: white;
+}
+
+.button_secondary:hover {
+	--font-color: white ;
+	background: black;
 }
