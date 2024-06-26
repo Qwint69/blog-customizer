@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { Article } from './components/article/Article';
 import { ArticleParamsForm } from './components/article-params-form/ArticleParamsForm';
-import { defaultArticleState, fontFamilyOptions, fontColors, backgroundColors, contentWidthArr, fontSizeOptions } from './constants/articleProps';
+import { defaultArticleState } from './constants/articleProps';
 
 import './styles/index.scss';
 import styles from './styles/index.module.scss';
@@ -14,44 +14,39 @@ const root = createRoot(domNode);
 
 const App = () => {
 
-	const defaultValues = {
-		font: fontFamilyOptions[0], fontSize: fontSizeOptions[0], color: fontColors[0],
-		bgColor: backgroundColors[0], width: contentWidthArr[0]
-	}
-
-	const [selected, setSelected] = useState<any>(defaultValues)
-	const [applied, setApplied] = useState<any>(defaultValues)
+	const [selected, setSelected] = useState(defaultArticleState)
+	const [applied, setApplied] = useState(defaultArticleState)
+	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	const setDefault = () => {
-		setSelected(defaultValues)
-		setApplied(defaultValues)
+		setSelected(defaultArticleState)
+		setApplied(defaultArticleState)
 	}
- 
+
 	return (
 		<div
 			className={clsx(styles.main)}
-			
-			>
+
+		>
 			<ArticleParamsForm
-				fontOptions={fontFamilyOptions}
-				fontSizeOptions={fontSizeOptions}
-				colorOptions={fontColors}
-				bgColorOptions={backgroundColors}
-				widthOptions={contentWidthArr}
 				selected={selected}
 				setSelected={setSelected}
 				setApplied={setApplied}
 				setDefault={setDefault}
+				isMenuOpen={isMenuOpen}
+				setIsMenuOpen={setIsMenuOpen}
 			/>
 			<Article style={
 				{
-					'--font-family': applied.font.value,
-					'--font-size': applied.fontSize.value,
-					'--font-color': applied.color.value,
-					'--container-width': applied.width.value,
-					'--bg-color': applied.bgColor.value
+					'--font-family': applied.fontFamilyOption.value,
+					'--font-size': applied.fontSizeOption.value,
+					'--font-color': applied.fontColor.value,
+					'--container-width': applied.contentWidth.value,
+					'--bg-color': applied.backgroundColor.value
 				} as CSSProperties
-			} />
+
+			}
+				onClick={() => setIsMenuOpen(false)} />
 		</div>
 	);
 };

@@ -5,12 +5,13 @@ import plane from 'src/images/plane.png';
 import { Text } from 'components/text';
 
 import styles from './Article.module.scss';
-import { CSSProperties } from 'react';
+import { CSSProperties, MouseEventHandler } from 'react';
 
-export const Article = ({ style }: {style: CSSProperties}) => {
+export const Article = ({ style, onClick }: {style: CSSProperties, onClick: MouseEventHandler<HTMLDivElement>}) => {
+
 	return (
 		
-		<div style={style}>
+		<div style={style} onClick={onClick}>
 			<article className={clsx(styles.article)}>
 				<Text as='h1' size={45} weight={800} uppercase dynamicLite>
 					Портрет Западной Швейцарии
